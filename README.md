@@ -25,3 +25,21 @@ Your task is to create a set of classes/modules to makes the given test suite pa
 | ----------------------- | ------------- |
 | be sunny 				  | - 			  |
 | be stormy occassionally | - 			  |
+
+
+# important things
+
+              -=\`\
+          |\ ____\_\__
+        -=\c`""""""" "`)
+           `~~~~~/ /~~`
+             -==/ /
+               '-'
+
+  ______________\`\______________
+          |\ ____\_\__
+  --------\c`""""""" "`)---------
+           `-----/ /--`
+  _____________ / /______________
+               '-'
+ © http://www.asciiworld.com/-Planes-.html :)

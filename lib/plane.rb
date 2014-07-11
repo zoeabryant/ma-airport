@@ -9,12 +9,11 @@ class Plane
 	end
 
 	def land_at(airport)
-		# airport.land_request
-		@status = :grounded
+		@status = :grounded if airport.land_request
 	end
 
 	def take_off_from(airport)
-		@status = :flying
+		@status = :flying if airport.take_off
 	end
 
 end

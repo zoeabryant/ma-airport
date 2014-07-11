@@ -4,42 +4,40 @@ describe Plane do
 
 	let(:flying_plane) { Plane.new(:status => :flying) }
 	let(:grounded_plane) { Plane.new(:status => :grounded) }
-	let(:airport) { double :airport }
+	let(:gatwick) { double :airport }
 
 	it 'first has a status of flying' do
 		expect(flying_plane.status).to eql :flying
 	end
 
+	it 'can be specified as grounded' do
+		expect(grounded_plane.status).to eql :grounded
+	end
+
 	it 'can land in airport' do
-		flying_plane.land_at(airport)
-		# expect(airport).stub(:land_request)
+		allow(gatwick).to receive(:land_request).and_return(true)
+		flying_plane.land_at(gatwick)
 		expect(flying_plane.status).to eql :grounded
 	end
 
-	it 'can take off from airport' do
-		grounded_plane.take_off_from(airport)
+	it 'stays flying if the weather is bad' do
+		allow(gatwick).to receive(:land_request).and_return(false)
+		flying_plane.land_at(gatwick)
 		expect(flying_plane.status).to eql :flying
 	end
 
-	# it 'stays grounded if weather is bad' do	end
-	# it 'knows that it is flying after it takes off' do	end
-	# it 'can fly' do	end
-	# it 'stays flying if the weather is bad' do	end
-	# it 'knows that it is not flying after it lands' do	end
+	it 'can take off from airport' do
+		allow(gatwick).to receive(:take_off).and_return(true)
+		grounded_plane.take_off_from(gatwick)
+		expect(flying_plane.status).to eql :flying
+	end
+
+	it 'stays grounded if weather is bad' do
+		allow(gatwick).to receive(:take_off).and_return(false)
+		grounded_plane.take_off_from(gatwick)
+		expect(grounded_plane.status).to eql :grounded
+	end
 
 end
 
- #              -=\`\
- #          |\ ____\_\__
- #        -=\c`""""""" "`)
- #           `~~~~~/ /~~`
- #             -==/ /
- #               '-'
- #
- #  ______________\`\______________
- #          |\ ____\_\__
- #  --------\c`""""""" "`)---------
- #           `-----/ /--`
- #  _____________ / /______________
- #               '-'
- # © http://www.asciiworld.com/-Planes-.html :)
+# ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈ ✈
