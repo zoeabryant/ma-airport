@@ -9,6 +9,7 @@ class Plane
 	end
 
 	def land_at(airport)
+		# airport.land_request
 		@status = :grounded
 	end
 

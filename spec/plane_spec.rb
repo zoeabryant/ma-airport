@@ -4,18 +4,20 @@ describe Plane do
 
 	let(:flying_plane) { Plane.new(:status => :flying) }
 	let(:grounded_plane) { Plane.new(:status => :grounded) }
+	let(:airport) { double :airport }
 
 	it 'first has a status of flying' do
 		expect(flying_plane.status).to eql :flying
 	end
 
 	it 'can land in airport' do
-		flying_plane.land_at(:aiport)
+		flying_plane.land_at(airport)
+		# expect(airport).stub(:land_request)
 		expect(flying_plane.status).to eql :grounded
 	end
 
 	it 'can take off from airport' do
-		grounded_plane.take_off_from(:aiport)
+		grounded_plane.take_off_from(airport)
 		expect(flying_plane.status).to eql :flying
 	end
 
