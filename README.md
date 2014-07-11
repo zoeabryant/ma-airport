@@ -7,12 +7,14 @@ Your task is to create a set of classes/modules to makes the given test suite pa
 # CRC
 ###Planes
 | **Responsibility** | Collaborators 					 |
+| ------------------ | --------------------------------- |
 | take off 			 | from airport, if weather is sunny |
 | fly 				 | - 								 |
 | land				 | in airport, if weather is sunny   |
 
 ###Airport
 | **Responsibility** | Collaborators 					 |
+| ------------------ | --------------------------------- |
 | allow landing 	 | for a plane, if weather is sunny  |
 | allow take off	 | for a plane, if weather is sunny  |
 | prevent landing	 | for a plane, if weather is stormy |
@@ -20,5 +22,6 @@ Your task is to create a set of classes/modules to makes the given test suite pa
 
 ###Weather
 | **Responsibility** 	  | Collaborators |
+| ----------------------- | ------------- |
 | be sunny 				  | - 			  |
 | be stormy occassionally | - 			  |
