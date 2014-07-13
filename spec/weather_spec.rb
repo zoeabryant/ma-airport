@@ -4,9 +4,9 @@ class TheWeather; include Weather; end
 
 describe Weather do
 
-	let(:the_weather)  { TheWeather.new									 }
-	let(:good_weather) { double the_weather, has_good_weather?: true 	 }
-	let(:bad_weather)  { double the_weather, has_good_weather?: false 	 }
+	let(:the_weather)  { TheWeather.new								 }
+	let(:good_weather) { double :weather, has_good_weather?: true 	 }
+	let(:bad_weather)  { double :weather, has_good_weather?: false 	 }
 
 	context 'communicating state of being' do
 
