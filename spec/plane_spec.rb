@@ -6,36 +6,48 @@ describe Plane do
 	let(:grounded_plane) { Plane.new(:status => :grounded) }
 	let(:gatwick) { double :airport }
 
-	it 'first has a status of flying' do
-		expect(flying_plane.status).to eql :flying
+	context 'is either flying or grounded' do
+
+		it 'is first set as flying' do
+			expect(flying_plane.status).to eql :flying
+		end
+
+		it 'can be specified as grounded' do
+			expect(grounded_plane.status).to eql :grounded
+		end
+
 	end
 
-	it 'can be specified as grounded' do
-		expect(grounded_plane.status).to eql :grounded
+	context 'landing in an airport' do
+
+		it 'can land in airport' do
+			allow(gatwick).to receive(:has_good_weather?).and_return(true)
+			flying_plane.land_at(gatwick)
+			expect(flying_plane.status).to eql :grounded
+		end
+
+		it 'stays flying if the weather is bad' do
+			allow(gatwick).to receive(:has_good_weather?).and_return(false)
+			flying_plane.land_at(gatwick)
+			expect(flying_plane.status).to eql :flying
+		end
+
 	end
 
-	it 'can land in airport' do
-		allow(gatwick).to receive(:has_good_weather?).and_return(true)
-		flying_plane.land_at(gatwick)
-		expect(flying_plane.status).to eql :grounded
-	end
+	context 'taking off from airport' do
 
-	it 'stays flying if the weather is bad' do
-		allow(gatwick).to receive(:has_good_weather?).and_return(false)
-		flying_plane.land_at(gatwick)
-		expect(flying_plane.status).to eql :flying
-	end
+		it 'can take off from airport' do
+			allow(gatwick).to receive(:has_good_weather?).and_return(true)
+			grounded_plane.take_off_from(gatwick)
+			expect(flying_plane.status).to eql :flying
+		end
 
-	it 'can take off from airport' do
-		allow(gatwick).to receive(:has_good_weather?).and_return(true)
-		grounded_plane.take_off_from(gatwick)
-		expect(flying_plane.status).to eql :flying
-	end
+		it 'stays grounded if weather is bad' do
+			allow(gatwick).to receive(:has_good_weather?).and_return(false)
+			grounded_plane.take_off_from(gatwick)
+			expect(grounded_plane.status).to eql :grounded
+		end
 
-	it 'stays grounded if weather is bad' do
-		allow(gatwick).to receive(:has_good_weather?).and_return(false)
-		grounded_plane.take_off_from(gatwick)
-		expect(grounded_plane.status).to eql :grounded
 	end
 
 end

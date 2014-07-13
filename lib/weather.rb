@@ -8,12 +8,12 @@ class Weather
 		@weather
 	end
 
-	def gods_roll_the_dice
+	def gods_dice_roll
 		rand(1..7)
 	end
 
 	def determine
-		@weather = gods_roll_the_dice != 3
+		@weather = gods_dice_roll != 3
 	end
 
 end
