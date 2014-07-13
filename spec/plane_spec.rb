@@ -32,6 +32,11 @@ describe Plane do
 			expect(flying_plane.status).to eql :flying
 		end
 
+		it 'does not try to land if it is already grounded' do
+			grounded_plane.land_at(gatwick)
+			expect(grounded_plane.status).to eql :grounded
+		end
+
 	end
 
 	context 'taking off from airport' do
@@ -46,6 +51,11 @@ describe Plane do
 			allow(gatwick).to receive(:allow_take_off?).with(grounded_plane).and_return(false)
 			grounded_plane.take_off_from(gatwick)
 			expect(grounded_plane.status).to eql :grounded
+		end
+
+		it 'does not try to take off if it is already flying' do
+			flying_plane.take_off_from(gatwick)
+			expect(flying_plane.status).to eql :flying
 		end
 
 	end
