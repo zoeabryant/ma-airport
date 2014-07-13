@@ -28,6 +28,8 @@ describe Airport do
 
 			expect(gatwick.planes).not_to include plane
 
+			expect(gatwick).to receive(:puts).with("Landing successful! What a beautiful clear day!")
+
 			gatwick.allow_landing?(plane)
 
 			expect(gatwick.planes).to include plane
@@ -35,7 +37,10 @@ describe Airport do
 
 		it 'does not allow a plane to land if the weather is bad' do
 			set_bad_weather
-			expect{ gatwick.allow_landing?(plane) }.to raise_error(RuntimeError)
+
+			expect(gatwick).to receive(:puts).with("Landing not permitted, wait until the storm has passed.")
+
+			gatwick.allow_landing?(plane)
 
 			expect(gatwick.planes).not_to include plane
 		end
@@ -50,7 +55,7 @@ describe Airport do
 		end
 
 		it 'allows a plane to take off' do
-			expect(gatwick.planes).to include plane
+			expect(gatwick).to receive(:puts).with("Take off successful! What a beautiful clear day!")
 
 			gatwick.allow_take_off?(plane)
 
@@ -59,7 +64,12 @@ describe Airport do
 
 		it 'does not allow a plane to take off if the weather is bad' do
 			set_bad_weather
-			expect{ gatwick.allow_take_off?(plane) }.to raise_error(RuntimeError)
+
+			expect(gatwick).to receive(:puts).with("Take off not permitted, wait until the storm has passed.")
+
+			gatwick.allow_take_off?(plane)
+
+			expect(gatwick.planes).to include plane
 		end
 
 	end

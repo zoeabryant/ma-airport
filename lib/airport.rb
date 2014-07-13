@@ -9,13 +9,25 @@ class Airport
 	end
 
 	def allow_landing?(plane)
-		raise "Landing not permitted, wait until the storm has passed" if !has_good_weather?
-		planes << plane
+		currently_good_weather = has_good_weather?
+
+		if currently_good_weather
+			puts "Landing successful! What a beautiful clear day!"
+			planes << plane
+		else
+			puts "Landing not permitted, wait until the storm has passed."
+		end
 	end
 
 	def allow_take_off?(plane)
-		raise "Take off is not permitted, wait until the storm has passed" if !has_good_weather?
-		@planes.delete(plane)
+		currently_good_weather = has_good_weather?
+
+		if currently_good_weather
+			puts "Take off successful! What a beautiful clear day!"
+			planes.delete(plane)
+		else
+			puts "Take off not permitted, wait until the storm has passed."
+		end
 	end
 
 end
