@@ -10,6 +10,7 @@ describe Plane do
 
 		it 'is first set as flying' do
 			expect(flying_plane.status).to eql :flying
+			flying_plane.status
 		end
 
 		it 'can be specified as grounded' do

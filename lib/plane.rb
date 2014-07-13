@@ -5,7 +5,7 @@ class Plane
 	end
 
 	def status
-		@status ||= :flying
+		return @status ||= :flying
 	end
 
 	def land_at(airport)
