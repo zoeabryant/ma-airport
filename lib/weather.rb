@@ -1,4 +1,4 @@
-class Weather
+module Weather
 
 	def initialize(options = {})
 		@weather = options.fetch(:good_weather, true)

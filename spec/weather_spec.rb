@@ -1,9 +1,11 @@
 require 'weather'
 
+class TheWeather; include Weather; end
+
 describe Weather do
 
-	let(:the_weather) { Weather.new }
-	let(:bad_weather) { Weather.new(:good_weather => false) }
+	let(:the_weather) { TheWeather.new }
+	let(:bad_weather) { TheWeather.new(:good_weather => false) }
 
 	context 'communicating state of being' do
 
