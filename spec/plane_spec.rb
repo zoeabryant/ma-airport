@@ -2,9 +2,9 @@ require 'plane'
 
 describe Plane do
 
-	let(:flying_plane) { Plane.new }
+	let(:flying_plane)   { Plane.new					   }
 	let(:grounded_plane) { Plane.new(:status => :grounded) }
-	let(:gatwick) { double :airport }
+	let(:gatwick)        { double :airport 				   }
 
 	context 'is either flying or grounded' do
 

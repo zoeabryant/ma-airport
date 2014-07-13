@@ -9,7 +9,7 @@ module Weather
 	end
 
 	def determine
-		@weather = gods_dice_roll != 3
+		gods_dice_roll != 3
 	end
 
 end
