@@ -1,11 +1,7 @@
 module Weather
 
-	def initialize(options = {})
-		@weather = options.fetch(:good_weather, true)
-	end
-
 	def has_good_weather?
-		@weather
+		determine
 	end
 
 	def gods_dice_roll

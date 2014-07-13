@@ -5,16 +5,22 @@ class TheWeather; include Weather; end
 describe Weather do
 
 	let(:the_weather) { TheWeather.new }
-	let(:bad_weather) { TheWeather.new(:good_weather => false) }
+	let(:good_weather) { double the_weather, has_good_weather?: true }
+	let(:bad_weather) { double the_weather, has_good_weather?: false }
 
 	context 'communicating state of being' do
 
 		it 'will tell me if is good today' do
-			expect(the_weather.has_good_weather?).to be true
+			expect(good_weather.has_good_weather?).to be true
 		end
 
 		it 'will tell me if is bad today' do
 			expect(bad_weather.has_good_weather?).to be false
+		end
+
+		it 'will determine the weather when asked' do
+			allow(bad_weather).to receive(:determine).and_return(false)
+			expect(bad_weather.has_good_weather?).to eq(false)
 		end
 
 	end
@@ -39,9 +45,9 @@ describe Weather do
 		end
 
 		it 'will be sunny if that number is not 3' do
-			allow(bad_weather).to receive(:gods_dice_roll).and_return(6)
-			bad_weather.determine
-			expect(bad_weather.has_good_weather?).to eq(true)
+			allow(the_weather).to receive(:gods_dice_roll).and_return(6)
+			the_weather.determine
+			expect(the_weather.has_good_weather?).to eq(true)
 		end
 
 	end
