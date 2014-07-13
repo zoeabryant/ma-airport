@@ -6,11 +6,11 @@ describe Airport do
 	let(:plane)   { double :plane 	}
 
 	def set_good_weather
-		allow(gatwick).to receive(:has_good_weather?).and_return(true)
+		allow(gatwick).to receive(:is_good_weather?).and_return(true)
 	end
 
 	def set_bad_weather
-		allow(gatwick).to receive(:has_good_weather?).and_return(false)
+		allow(gatwick).to receive(:is_good_weather?).and_return(false)
 	end
 
 	context 'management' do

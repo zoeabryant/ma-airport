@@ -1,6 +1,6 @@
 module Weather
 
-	def has_good_weather?
+	def is_good_weather?
 		determine
 	end
 

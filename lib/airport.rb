@@ -9,7 +9,7 @@ class Airport
 	end
 
 	def allow_landing?(plane)
-		currently_good_weather = has_good_weather?
+		currently_good_weather = is_good_weather?
 
 		if currently_good_weather
 			puts "Landing successful! What a beautiful clear day!"
@@ -20,7 +20,7 @@ class Airport
 	end
 
 	def allow_take_off?(plane)
-		currently_good_weather = has_good_weather?
+		currently_good_weather = is_good_weather?
 
 		if currently_good_weather
 			puts "Take off successful! What a beautiful clear day!"
