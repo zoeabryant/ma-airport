@@ -19,8 +19,8 @@ describe Weather do
 		end
 
 		it 'will determine the weather when asked' do
-			allow(bad_weather).to receive(:determine).and_return(false)
-			expect(bad_weather.has_good_weather?).to eq(false)
+			allow(the_weather).to receive(:determine).and_return(false)
+			expect(the_weather.has_good_weather?).to eq(false)
 		end
 
 	end
